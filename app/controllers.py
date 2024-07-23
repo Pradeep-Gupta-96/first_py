@@ -11,7 +11,7 @@ import time
 import os
 
 def checkapi_items():
-   return "ohm shree ganesha deva!!"
+   return "ohmm shree ganesha deva!"
 
 def create_item():
     consignment_number = request.json.get('consignment_number')
@@ -27,21 +27,11 @@ def create_item():
 def main_workflow(consignment_number):
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
-    if os.name == 'nt':  # Windows
-        pass
-        # options.binary_location = r'C:\Program Files\Google\Chrome\Application\chrome.exe'
-        # chromedriver_path = r'C:\path\to\chromedriver.exe'
-        driver = webdriver.Chrome(options=options)
 
-    else:  # Assuming Linux
-        options.binary_location = '/usr/bin/google-chrome'
-        chromedriver_path = '/usr/local/bin/chromedriver'
-        driver = webdriver.Chrome(executable_path=chromedriver_path, options=options)
+    options.binary_location = '/usr/bin/google-chrome'
 
-    # Add headless mode argument (optional)
-
-    # Initialize Chrome driver with options and path
-    # driver = webdriver.Chrome()
+    # Initialize Chrome driver with options
+    driver = webdriver.Chrome(options=options)
 
     # Open the India Post website
     driver.get("https://www.indiapost.gov.in/_layouts/15/dop.portal.tracking/trackconsignment.aspx")
