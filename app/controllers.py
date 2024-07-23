@@ -8,6 +8,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 import re
 import time
+import os
 
 def checkapi_items():
    return "ohm shree ganesha deva!"
@@ -25,8 +26,21 @@ def create_item():
 
 def main_workflow(consignment_number):
     options = webdriver.ChromeOptions()
-    options.add_argument('--headless')  # Optional: use headless mode if no browser UI is needed
-    driver = webdriver.Chrome(options=options)
+    options.add_argument('--headless')
+    if os.name == 'nt':  # Windows
+        pass
+        # options.binary_location = r'C:\Program Files\Google\Chrome\Application\chrome.exe'
+        # chromedriver_path = r'C:\path\to\chromedriver.exe'
+        driver = webdriver.Chrome(options=options)
+
+    else:  # Assuming Linux
+        options.binary_location = '/usr/bin/google-chrome'
+        chromedriver_path = '/usr/local/bin/chromedriver'
+        driver = webdriver.Chrome(executable_path=chromedriver_path, options=options)
+
+    # Add headless mode argument (optional)
+
+    # Initialize Chrome driver with options and path
     # driver = webdriver.Chrome()
 
     # Open the India Post website
