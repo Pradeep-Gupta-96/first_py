@@ -147,7 +147,7 @@ def print_tracking_information(driver):
             article_type = article_type_row.text
         except Exception as err:
             article_type = 'Not Available'
-
+        return 'article type'
         # Get event details
         event_details = wait.until(EC.presence_of_element_located((By.ID, "ctl00_PlaceHolderMain_ucNewLegacyControl_lblMailArticleDtlsOER"))).text
 
