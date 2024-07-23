@@ -11,7 +11,7 @@ import time
 import os
 
 def checkapi_items():
-   return "ohm shree ganesha deva!"
+   return "ohm shree ganesha deva!!"
 
 def create_item():
     consignment_number = request.json.get('consignment_number')
