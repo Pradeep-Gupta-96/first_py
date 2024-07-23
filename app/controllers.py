@@ -137,8 +137,12 @@ def print_tracking_information(driver):
 
     try:
         # Wait and get the article type element
-        # article_type_row = wait.until(EC.presence_of_element_located((By.XPATH, "//th[contains(text(), 'Article Type')]/../following-sibling::tr/td")))
-        # article_type = article_type_row.text
+        try:
+
+            article_type_row = wait.until(EC.presence_of_element_located((By.XPATH, "//th[contains(text(), 'Article Type')]/../following-sibling::tr/td")))
+            article_type = article_type_row.text
+        except Exception as err:
+            article_type = 'Not Available'
 
         # Get event details
         event_details = wait.until(EC.presence_of_element_located((By.ID, "ctl00_PlaceHolderMain_ucNewLegacyControl_lblMailArticleDtlsOER"))).text
@@ -162,7 +166,7 @@ def print_tracking_information(driver):
                 events.append(event)
 
         return {
-            "Article Type": " ",
+            "Article Type": article_type,
             "Event Details": event_details,
             "Current Status": current_status,
             "Events": events
