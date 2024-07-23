@@ -10,7 +10,7 @@ import re
 import time
 
 def checkapi_items():
-   return "Welcome to the Home Page!"
+   return "ohm shree ganesha deva!"
 
 def create_item():
     consignment_number = request.json.get('consignment_number')
@@ -26,8 +26,8 @@ def create_item():
 def main_workflow(consignment_number):
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')  # Optional: use headless mode if no browser UI is needed
-    # driver = webdriver.Chrome(options=options)
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=options)
+    # driver = webdriver.Chrome()
 
     # Open the India Post website
     driver.get("https://www.indiapost.gov.in/_layouts/15/dop.portal.tracking/trackconsignment.aspx")
