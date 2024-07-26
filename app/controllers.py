@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.chrome.options import Options
 import re
 import time
 import os
@@ -29,16 +30,18 @@ def create_item():
 def main_workflow(consignment_number):
     options = webdriver.ChromeOptions()
     # Options for ChromeDriver
-    chrome_options = options()
+    chrome_options = Options()
+
+# Add the desired options
     chrome_options.add_argument('--headless')  # Run in headless mode (no GUI)
     chrome_options.add_argument('--disable-gpu')  # Disable GPU acceleration
     chrome_options.add_argument('--no-sandbox')  # No sandboxing (if needed)
-    chrome_options.add_argument("--disable-extensions")
-    chrome_options.add_argument("--disable-popup-blocking")
+    chrome_options.add_argument('--disable-extensions')
+    chrome_options.add_argument('--disable-popup-blocking')
+    chrome_options.add_argument('--disable-dev-shm-usage')
 
-    options.add_argument('--disable-dev-shm-usage')
-    
-    driver = webdriver.Chrome(options=options)
+    # Initialize the WebDriver with the specified options
+    driver = webdriver.Chrome(options=chrome_options)
 
     try:
         driver.get("https://www.indiapost.gov.in/_layouts/15/dop.portal.tracking/trackconsignment.aspx")
