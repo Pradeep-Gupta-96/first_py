@@ -28,7 +28,7 @@ def create_item():
 def main_workflow(consignment_number):
     options = webdriver.ChromeOptions()
     # Options for ChromeDriver
-    chrome_options = Options()
+    chrome_options = options()
     chrome_options.add_argument('--headless')  # Run in headless mode (no GUI)
     chrome_options.add_argument('--disable-gpu')  # Disable GPU acceleration
     chrome_options.add_argument('--no-sandbox')  # No sandboxing (if needed)
