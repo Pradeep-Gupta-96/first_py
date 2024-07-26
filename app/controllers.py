@@ -8,9 +8,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 import re
 import time
+import os
 
 def checkapi_items():
-   return "Welcome to the Home Page!"
+   return "ohmm shree ganesha deva!"
 
 def create_item():
     consignment_number = request.json.get('consignment_number')
@@ -151,7 +152,6 @@ def print_tracking_information(driver):
             article_type = article_type_row.text
         except Exception as e:
             article_type = 'Not Available'
-
         event_details = wait.until(EC.presence_of_element_located((By.ID, "ctl00_PlaceHolderMain_ucNewLegacyControl_lblMailArticleDtlsOER"))).text
         current_status = wait.until(EC.presence_of_element_located((By.ID, "ctl00_PlaceHolderMain_ucNewLegacyControl_lblMailArticleCurrentStatusOER"))).text
         events_table = wait.until(EC.presence_of_element_located((By.ID, "ctl00_PlaceHolderMain_ucNewLegacyControl_gvTrckMailArticleEvntOER")))
